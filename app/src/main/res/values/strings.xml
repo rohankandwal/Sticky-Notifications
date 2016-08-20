@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Sticky-Notifications</string>
+    <string name="font_open_sans_bold">OpenSans-Bold</string>
+    <string name="font_open_sans_regular">OpenSans-Regular</string>
+    <string name="new_notification">New Notification</string>
+    <string name="setttings_icon">Settings Icon</string>
+    <string name="title">Title</string>
+    <string name="description">Description</string>
+    <string name="make_it_sticky">Make it sticky</string>
+    <string name="cancel">Cancel</string>
+    <string name="create">Create</string>
+
+    <string-array name="priorty_name">
+        <item>Low</item>
+        <item>Medium</item>
+        <item>High</item>
+    </string-array>
+
+    <integer-array name="priority_value">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </integer-array>
+</resources>
