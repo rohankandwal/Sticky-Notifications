@@ -30,6 +30,7 @@
         app:fontName="@string/font_open_sans_bold" />
 
     <android.support.design.widget.TextInputLayout
+        android:layout_marginTop="10dp"
         android:id="@+id/tilTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -44,6 +45,7 @@
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
+        android:layout_marginTop="10dp"
         android:id="@+id/tilDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -59,11 +61,13 @@
 
     <android.support.v7.widget.AppCompatSpinner
         android:id="@+id/spSpinner"
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tilDescription" />
 
     <com.itcse.sticky_notifications.custom_views.CustomCheckBox
+        android:layout_marginTop="10dp"
         android:id="@+id/cbSticky"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
