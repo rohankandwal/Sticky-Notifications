@@ -22,22 +22,12 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_toStartOf="@+id/ivSettings"
         android:ellipsize="end"
         android:maxLines="1"
         android:paddingTop="10dp"
         android:text="@string/new_notification"
         android:textSize="18sp"
         app:fontName="@string/font_open_sans_bold" />
-
-    <ImageView
-        android:id="@+id/ivSettings"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:contentDescription="@string/setttings_icon"
-        android:padding="5dp"
-        android:src="@drawable/ic_settings_black" />
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/tilTitle"
