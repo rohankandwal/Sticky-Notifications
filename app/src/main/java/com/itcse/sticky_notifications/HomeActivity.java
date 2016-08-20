@@ -6,12 +6,25 @@ import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class HomeActivity extends AppCompatActivity {
+
+    @BindView(R.id.spSpinner)
+    Spinner spPriority;
+
+
+    private String[] priorityName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        priorityName = getResources().getStringArray(R.array.priorty_name);
 
         // Centering the screen
         Window window = getWindow();
@@ -25,6 +38,7 @@ public class HomeActivity extends AppCompatActivity {
         window.setFlags(WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH, WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH);
 
         setContentView(R.layout.activity_home);
+        ButterKnife.bind(this);
 
         /**
          * We don't want Toolbar in this app
@@ -32,6 +46,9 @@ public class HomeActivity extends AppCompatActivity {
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
         }
+
+        final ArrayAdapter<String> simpleArrayAdapter = new ArrayAdapter<>(this, R.layout.custom_textview, R.id.tvText, priorityName);
+        spPriority.setAdapter(simpleArrayAdapter);
     }
 
     /**
