@@ -40,6 +40,8 @@
             android:id="@+id/etTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:singleLine="true"
             android:hint="@string/title"
             app:fontName="@string/font_open_sans_regular" />
     </android.support.design.widget.TextInputLayout>
@@ -55,6 +57,7 @@
             android:id="@+id/etDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:singleLine="true"
             android:hint="@string/description"
             app:fontName="@string/font_open_sans_regular" />
     </android.support.design.widget.TextInputLayout>

@@ -9,16 +9,22 @@
     <string name="make_it_sticky">Make it sticky</string>
     <string name="cancel">Cancel</string>
     <string name="create">Create</string>
+    <string name="error_enter_title">Please enter title</string>
+    <string name="error_enter_description">Please enter description</string>
+    <string name="please_choose_priority">Please choose priority</string>
+    <string name="edit_notification">Edit Notification</string>
+    <string name="delete">Delete</string>
+    <string name="update">Update</string>
 
-    <string-array name="priorty_name">
+    <string-array name="priority_name">
         <item>Low</item>
         <item>Medium</item>
         <item>High</item>
     </string-array>
 
     <integer-array name="priority_value">
+        <item>-2</item>
         <item>1</item>
         <item>2</item>
-        <item>3</item>
     </integer-array>
 </resources>
