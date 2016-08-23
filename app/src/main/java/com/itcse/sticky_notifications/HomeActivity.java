@@ -228,7 +228,7 @@ public class HomeActivity extends Activity {
                 .setOngoing(cbSticky.isChecked())
                 .setWhen(0)
                 .setContentText(description)
-                .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
+                .setVisibility(NotificationCompat.VISIBILITY_PUBLIC) // Allows notification to be shown even when user has selected private notification
                 .setContentIntent(pendingIntent);
 
         // Creating a new notification if the notificationId was new or updating an existing notification if id was old
