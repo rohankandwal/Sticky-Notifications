@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Sticky-Notifications</string>
+    <string name="app_name">Sticky Notification Reminders</string>
     <string name="font_open_sans_bold">OpenSans-Bold</string>
     <string name="font_open_sans_regular">OpenSans-Regular</string>
     <string name="new_notification">New Notification</string>
@@ -15,6 +15,11 @@
     <string name="edit_notification">Edit Notification</string>
     <string name="delete">Delete</string>
     <string name="update">Update</string>
+    <string name="make_notification_public">Make notification public</string>
+    <string name="information">Information</string>
+    <string name="ok">OK</string>
+    <string name="make_it_sticky_description">Sticky notifications can\'t be deleted even when you swipe on notification bar or clear all notifications. Only way to delete this notification is to tap on the notification and press \"Delete\" button.</string>
+    <string name="make_notification_public_description">Public notifications will always be displayed on the notification bar, even when you have \"Hide sensitive notification content\" ON.</string>
 
     <string-array name="priority_name">
         <item>Low</item>

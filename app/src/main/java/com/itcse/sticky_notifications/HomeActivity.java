@@ -4,9 +4,11 @@ import android.app.Activity;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.NotificationCompat;
 import android.text.TextUtils;
 import android.view.Gravity;
@@ -222,7 +224,7 @@ public class HomeActivity extends Activity {
         // Creating a notification using NotificationCompact.Builder
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this);
         builder.setAutoCancel(false)
-                .setSmallIcon(R.mipmap.ic_launcher)
+                .setSmallIcon(R.drawable.ic_small_icon)
                 .setContentTitle(title)
                 .setPriority(getResources().getIntArray(R.array.priority_value)[priority])
                 .setOngoing(cbSticky.isChecked())
@@ -234,6 +236,23 @@ public class HomeActivity extends Activity {
         // Creating a new notification if the notificationId was new or updating an existing notification if id was old
         ((NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE)).notify(notificationId, builder.build());
 
+    }
+
+    /**
+     * Function to show message dialog when user clicks on info
+     * @param dialogMessage String containing dialog message
+     */
+    private void showMessageDialog(final String dialogMessage) {
+        final AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+        alertDialog.setTitle(getString(R.string.information));
+        alertDialog.setMessage(dialogMessage);
+        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, getString(R.string.ok),
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+        alertDialog.show();
     }
 
     /**
@@ -256,7 +275,7 @@ public class HomeActivity extends Activity {
         return super.onTouchEvent(event);
     }
 
-    @OnClick({R.id.bCancel, R.id.bCreate})
+    @OnClick({R.id.bCancel, R.id.bCreate, R.id.ivStickyInfo, R.id.ivStickyPublic})
     void onClick(final View view) {
         switch (view.getId()) {
             case R.id.bCreate:
@@ -276,6 +295,8 @@ public class HomeActivity extends Activity {
                     // If the text is "Cancel", cancelling the notification using notificationId
                     ((NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE)).cancel(notificationId);
                 }
+                // Whichever button is pressed, finish the activity once the buttons perform their task
+                finish();
                 break;
             case R.id.bCancel:
                 // If the notification is new, the cancel button's text will be "Cancel"
@@ -284,8 +305,15 @@ public class HomeActivity extends Activity {
                 if (bCancel.getText().toString().equalsIgnoreCase(getString(R.string.update))) {
                     addNotification();
                 }
+                // Whichever button is pressed, finish the activity once the buttons perform their task
+                finish();
+                break;
+            case R.id.ivStickyInfo:
+                showMessageDialog(getString(R.string.make_it_sticky_description));
+                break;
+            case R.id.ivStickyPublic:
+                showMessageDialog(getString(R.string.make_notification_public_description));
+
         }
-        // Whichever button is pressed, finish the activity once the buttons perform their task
-        finish();
     }
 }
