@@ -10,4 +10,5 @@ public class Constants {
     public static final String notificationId = "notification_id";
     public static final String sharedPreferences = "notifications.xml";
     public static final String makeSticky = "make_sticky";
+    public static final String makePublic = "make_public";
 }

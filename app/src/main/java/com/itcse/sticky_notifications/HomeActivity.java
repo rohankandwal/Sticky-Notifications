@@ -47,6 +47,8 @@ public class HomeActivity extends Activity {
     CheckBox cbSticky;
     @BindView(R.id.tvHeading)
     TextView tvHeading;
+    @BindView(R.id.cbPublicNotification)
+    CheckBox cbPublicNotification;
 
     @BindView(R.id.bCreate)
     Button bCreate;
@@ -143,9 +145,11 @@ public class HomeActivity extends Activity {
                 final String description = intent.getStringExtra(Constants.description);
                 final int priority = intent.getIntExtra(Constants.priority, 1);
                 final boolean makeSticky = intent.getBooleanExtra(Constants.makeSticky, false);
+                final boolean makePublic  = intent.getBooleanExtra(Constants.makePublic, false);
 
                 // Setting old data to the activity and changing dialog title and button names.
                 cbSticky.setChecked(makeSticky);
+                cbPublicNotification.setChecked(makePublic);
                 spPriority.setSelection(priority, true);
                 tvHeading.setText(getString(R.string.edit_notification));
                 bCreate.setText(getString(R.string.delete));
@@ -163,6 +167,7 @@ public class HomeActivity extends Activity {
 
     /**
      * Function to check if the form is missing some information
+     *
      * @return true if data is valid, false if invalid
      */
     private boolean dataValid() {
@@ -192,6 +197,7 @@ public class HomeActivity extends Activity {
         final String description = etDescription.getText().toString().trim();
         final int priority = spPriority.getSelectedItemPosition();
         final boolean makeSticky = cbSticky.isChecked();
+        final boolean makePublic = cbPublicNotification.isChecked();
 
         // NotificationId will be -1 if it is a new notification, otherwise it is old notification
         // If new notification, creating a new notificationId
@@ -212,6 +218,7 @@ public class HomeActivity extends Activity {
         intent.putExtra(Constants.priority, priority);
         intent.putExtra(Constants.notificationId, notificationId);
         intent.putExtra(Constants.makeSticky, makeSticky);
+        intent.putExtra(Constants.makePublic, makePublic);
 
         // using this function to retain correct intent when the activity is opened
         // http://stackoverflow.com/a/3168653/1979347
@@ -230,7 +237,7 @@ public class HomeActivity extends Activity {
                 .setOngoing(cbSticky.isChecked())
                 .setWhen(0)
                 .setContentText(description)
-                .setVisibility(NotificationCompat.VISIBILITY_PUBLIC) // Allows notification to be shown even when user has selected private notification
+                .setVisibility(makePublic ? NotificationCompat.VISIBILITY_PUBLIC : NotificationCompat.VISIBILITY_PRIVATE) // Allows notification to be shown even when user has selected private notification
                 .setContentIntent(pendingIntent);
 
         // Creating a new notification if the notificationId was new or updating an existing notification if id was old
@@ -240,6 +247,7 @@ public class HomeActivity extends Activity {
 
     /**
      * Function to show message dialog when user clicks on info
+     *
      * @param dialogMessage String containing dialog message
      */
     private void showMessageDialog(final String dialogMessage) {
